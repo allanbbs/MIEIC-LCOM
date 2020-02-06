@@ -1,0 +1,4 @@
+<map id="uart_reception" name="uart_reception">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,109,32"/>
+<area shape="rect" id="node2" href="$uart_8c.html#a3b433bf63505daaec515241697f834da" title="Checks if there are errors in lsr." alt="" coords="157,5,276,32"/>
+</map>

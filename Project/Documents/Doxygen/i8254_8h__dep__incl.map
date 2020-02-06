@@ -1,0 +1,14 @@
+<map id="i8254.h" name="i8254.h">
+<area shape="rect" id="node1" title=" " alt="" coords="464,5,528,32"/>
+<area shape="rect" id="node2" href="$i8042_8h.html" title=" " alt="" coords="296,80,360,107"/>
+<area shape="rect" id="node5" href="$menu_8c.html" title="This is file contains the implementation of functions to the menu." alt="" coords="421,229,486,256"/>
+<area shape="rect" id="node7" href="$proj_8c.html" title="This is file contains the implementation of the main file in the project." alt="" coords="155,229,210,256"/>
+<area shape="rect" id="node9" href="$keyboard_8c.html" title=" " alt="" coords="453,155,539,181"/>
+<area shape="rect" id="node12" href="$timer_8c.html" title=" " alt="" coords="615,80,678,107"/>
+<area shape="rect" id="node3" href="$mouse_8h.html" title=" " alt="" coords="255,155,327,181"/>
+<area shape="rect" id="node4" href="$game_8c.html" title="This is file contains the implementation of functions to the game interface." alt="" coords="331,229,397,256"/>
+<area shape="rect" id="node8" href="$graphic_8c.html" title=" " alt="" coords="105,155,180,181"/>
+<area shape="rect" id="node10" href="$uart_8h.html" title=" " alt="" coords="26,155,81,181"/>
+<area shape="rect" id="node6" href="$mouse_8c.html" title=" " alt="" coords="235,229,307,256"/>
+<area shape="rect" id="node11" href="$uart_8c.html" title=" " alt="" coords="26,229,81,256"/>
+</map>

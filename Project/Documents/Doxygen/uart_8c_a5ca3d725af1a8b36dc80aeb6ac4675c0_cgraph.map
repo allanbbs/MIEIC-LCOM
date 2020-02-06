@@ -1,0 +1,6 @@
+<map id="set_uart" name="set_uart">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,75,83"/>
+<area shape="rect" id="node2" href="$uart_8c.html#abf0a625302ae59abc6a423f984fb4718" title="Set the bits perchar in the lcr register." alt="" coords="123,5,241,32"/>
+<area shape="rect" id="node3" href="$uart_8c.html#adb431136b18d4998006e16c3ddedf37c" title="Set the parity number in the lcr register." alt="" coords="143,56,221,83"/>
+<area shape="rect" id="node4" href="$uart_8c.html#ab02560c9b4b19f0286ec9f9363e21040" title="Set the stop bit in lcr." alt="" coords="135,107,229,133"/>
+</map>

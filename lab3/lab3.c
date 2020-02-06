@@ -1,19 +1,18 @@
 #include <lcom/lcf.h>
-
+#include "i8042.h"
 #include <lcom/lab3.h>
-
+#include "keyboard.h"
 #include <stdbool.h>
 #include <stdint.h>
-#include "keyboard.h"
-#include "i8254.h"
-#include "i8042.h"
-#include "timer.h"
-#include "utils.h"
-
-
-extern uint8_t data; 
-extern uint8_t sys_counter; 
-extern int counter;
+extern uint8_t data;
+extern uint8_t code_bytes[2];
+extern bool type;
+extern bool isTwoBytes;
+extern int KBC_hook_id;
+extern int sys_count;
+extern uint8_t size;
+extern int count;
+extern int hook_id;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -40,98 +39,98 @@ int main(int argc, char *argv[]) {
 }
 
 int(kbd_test_scan)() {
-  message msg; 
-  int r; 
-  int ipc_status; 
-  uint8_t irq_set; 
+  int ipc_status,r;
+  message msg;
+  uint8_t irq_set;
+  if(keyboard_subscribe(&irq_set)) return 1;
 
-  if(keyboard_subscribe(&irq_set) != 0) return 1; 
-
-  while( data != KBC_KC_ESC) { 
+ while( data != ESC_BR_CODE ) { /* You may want to use a different condition */
+    /* Get a request message. */
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
-      //printf("driver_receive failed with: %d", r);
-      continue;
+        printf("driver_receive failed with: %d", r);
+        continue;
     }
-    if (is_ipc_notify(ipc_status)) { 
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:        
-          if (msg.m_notify.interrupts & irq_set) { 
-            //to do if interrupt is detected
-            keyboard_handler();
-            keyboard_display_scans();            
-          }
-        break;
-        default:
-          break;  
-      }
-    } else{ 
-      continue;
+    if (is_ipc_notify(ipc_status)) { /* received notification */
+        switch (_ENDPOINT_P(msg.m_source)) {
+            case HARDWARE: /* hardware interrupt notification */       
+                if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+                    kbc_ih();
+                    parse_data();
+                    if(!isTwoBytes)
+                      kbd_print_scancode(type,size,code_bytes);
+                }
+                break;
+            default:
+                break; /* no other notifications expected: do nothing */ 
+        }
+    } else { /* received a standard message, not a notification */
+        /* no standard messages expected: do nothing */
     }
   }
-  
-  kbd_print_no_sysinb(sys_counter);
-  return keyboard_unsubscribe();       
+  kbd_print_no_sysinb(sys_count);
+  return keyboard_unsubscribe();
 }
-
 
 
 int(kbd_test_poll)() {
-  uint8_t commandByte; 
-
-  while ( data != KBC_KC_ESC ){
-    keyboard_handler(); 
-    keyboard_display_scans(); 
+  uint8_t command;
+  while(data != ESC_BR_CODE){
+    while(keyboard_read())
+      ;
+      parse_data();
+      if(!isTwoBytes)
+        kbd_print_scancode(type,size,code_bytes);
+    
+      
   }
-
-  // enable the interrupt again
-  if (keyboard_write(IN_BUF, KBC_CMD_R)) return 1;        //writing we want to read the command byte
-  if (keyboard_read()) return 1;                          //read the command byte
-  commandByte = data;                                     //store the command byte
-  commandByte|= KBC_CMD_INT;                              //set int variable to 1
-  if (keyboard_write(IN_BUF, KBC_CMD_W)) return 1;;       //writing we want to write a command byte
-  if (keyboard_write(WRITE_CMD, commandByte)) return 1;   //writing the command byte
-
-  kbd_print_no_sysinb(sys_counter);
+  kbd_print_no_sysinb(sys_count);
+  keyboard_write(IN_BUF,KBC_CMD_R);
+  keyboard_read();
+  command = data;
+  command|=BIT(0);
+  keyboard_write(IN_BUF,KBC_CMD_W);
+  keyboard_write(WRITE_CMD,command);
   return 0;
+
 }
 
 int(kbd_test_timed_scan)(uint8_t n) {
-  message msg; 
-  int r; 
-  int ipc_status; 
-  uint8_t irq_set,irq_timer0;
+  int ipc_status,r;
+  message msg;
+  uint8_t irq_set,timer_irq;
+  if(keyboard_subscribe(&irq_set)) return 1;
+  if(timer_subscribe_int(&timer_irq)) return 1;
   int idle = n*60;
 
-  if(keyboard_subscribe(&irq_set) != 0) return 1; 
-  if(timer_subscribe_int(&irq_timer0) != 0) return 1;
-
-  while( data != KBC_KC_ESC && counter<idle ) { 
+ while( data != ESC_BR_CODE && count < idle) { /* You may want to use a different condition */
+    /* Get a request message. */
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
-      continue;
+        printf("driver_receive failed with: %d", r);
+        continue;
     }
-    if (is_ipc_notify(ipc_status)) { 
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:        
-          if (msg.m_notify.interrupts & irq_timer0) { 
-            timer_int_handler();
-
-          }
-          if(msg.m_notify.interrupts & irq_set){
-            keyboard_handler();
-            keyboard_display_scans();
-            counter = 0; 
-
-          }        
-          
-        break;
-        default:
-          break;  
-      }
-    } else{ 
-      continue;
+    if (is_ipc_notify(ipc_status)) { /* received notification */
+        switch (_ENDPOINT_P(msg.m_source)) {
+            case HARDWARE: /* hardware interrupt notification */       
+                if (msg.m_notify.interrupts & timer_irq) { /* subscribed interrupt */
+                    timer_int_handler();
+                }
+                if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+                    kbc_ih();
+                    parse_data();
+                    if(!isTwoBytes)
+                      kbd_print_scancode(type,size,code_bytes);
+                    count = 0;
+                }
+                break;
+            default:
+                break; /* no other notifications expected: do nothing */ 
+        }
+    } else { /* received a standard message, not a notification */
+        /* no standard messages expected: do nothing */
     }
   }
-    if(timer_unsubscribe_int() != 0) return 1;
-    if(keyboard_unsubscribe() != 0)  return 1;
-    return 0;
+  kbd_print_no_sysinb(sys_count);
+  if(timer_unsubscribe_int()) return 1;
+  return keyboard_unsubscribe();
 }
+

@@ -1,0 +1,52 @@
+<map id="proj_main_loop" name="proj_main_loop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,701,115,728"/>
+<area shape="rect" id="node2" href="$menu_8c.html#a54d8ff8328c6031406dd7a133ac3930c" title="Checks if the mouse is on the EXIT option and if it has been pressed left buttom." alt="" coords="203,5,288,32"/>
+<area shape="rect" id="node3" href="$menu_8c.html#a1004fdfb38d3915514e5c229dc7eb827" title="Checks if the mouse is on the INSTRUCTION and if it has been pressed left buttom." alt="" coords="180,56,311,83"/>
+<area shape="rect" id="node7" href="$menu_8c.html#a0e35436e63a42498e91667e39c53b6fa" title="Checks if the mouse is on the START option and if it has been pressed left buttom." alt="" coords="200,296,291,323"/>
+<area shape="rect" id="node8" href="$proj_8c.html#a63516f4df7b0379799717a85da2e7d8c" title=" " alt="" coords="220,397,271,424"/>
+<area shape="rect" id="node10" href="$mouse_8c.html#a981c5a2f5c527b8401b455d16b167c1b" title=" " alt="" coords="399,347,511,373"/>
+<area shape="rect" id="node15" href="$game_8c.html#a9e8bcd794765b7fe53f2684856fb4b9e" title="Draw the game and parses the information to the mem_video." alt="" coords="204,245,287,272"/>
+<area shape="rect" id="node23" href="$game_8c.html#ab1ee7c5e0c7e82537d895fca6f223de1" title="Get the angle between the mouse and cannon of the turn." alt="" coords="206,448,285,475"/>
+<area shape="rect" id="node24" href="$game_8c.html#a729609a5f13ce5df06b4ffaa280d69ac" title="Handle the movement of the cannons setting the xspeed variable and yspeed for each cannon." alt="" coords="191,499,299,525"/>
+<area shape="rect" id="node25" href="$mouse_8c.html#a5265009695e52ca47125386e676a2728" title=" " alt="" coords="200,549,291,576"/>
+<area shape="rect" id="node26" href="$game_8c.html#a08e964e9067616a6278379262849465b" title="Initializes the sprites." alt="" coords="189,600,301,627"/>
+<area shape="rect" id="node27" href="$menu_8c.html#a1a8845bb0a399ee15920c51f3a03f6f2" title="Initialize sprites for the menu." alt="" coords="186,651,305,677"/>
+<area shape="rect" id="node28" href="$keyboard_8c.html#a484b53117825b3a0cf088f2830581e92" title=" " alt="" coords="163,701,328,728"/>
+<area shape="rect" id="node29" href="$keyboard_8c.html#a2f4098fc71cbd39422c1001d66970bf5" title=" " alt="" coords="183,752,307,779"/>
+<area shape="rect" id="node32" href="$keyboard_8c.html#acf4fe6cea09b4953e286c1df9a61f2c8" title=" " alt="" coords="176,803,315,829"/>
+<area shape="rect" id="node33" href="$graphic_8c.html#a0e0e4d2cff86e224a076eb48fb6937be" title=" " alt="" coords="196,853,295,880"/>
+<area shape="rect" id="node34" href="$menu_8c.html#a25daedb7d987b549f60da4e60ac55215" title="Draw the inital menu." alt="" coords="204,119,287,145"/>
+<area shape="rect" id="node36" href="$mouse_8c.html#aed4404005e4c565ac36656307386e0ac" title=" " alt="" coords="206,904,285,931"/>
+<area shape="rect" id="node38" href="$mouse_8c.html#a05f1f7a91106aae02b1a91bf81f4b312" title=" " alt="" coords="173,955,318,981"/>
+<area shape="rect" id="node39" href="$mouse_8c.html#af74d30be7ee598815871aa2adb5f1001" title=" " alt="" coords="198,1005,293,1032"/>
+<area shape="rect" id="node40" href="$rtc_8c.html#a254c3faf9449f9c50bd7d941470f0280" title="This functions reads a register from the RTC." alt="" coords="211,1056,280,1083"/>
+<area shape="rect" id="node43" href="$group__timer.html#ga91a2072306c68353712a6b771287dc2c" title="Timer 0 interrupt handler." alt="" coords="185,1107,306,1133"/>
+<area shape="rect" id="node44" href="$group__timer.html#gaf2c04fa8e97ffa748fd3f612886a92a7" title="Changes the operating frequency of a timer." alt="" coords="176,1157,315,1184"/>
+<area shape="rect" id="node48" href="$group__timer.html#gac57a7e1140a7e00ad95ac5488d2a671b" title="Subscribes and enables Timer 0 interrupts." alt="" coords="178,1208,313,1235"/>
+<area shape="rect" id="node49" href="$graphic_8c.html#afb86c55ab9505a6af0b94c5df0b66b9e" title=" " alt="" coords="409,1284,502,1311"/>
+<area shape="rect" id="node50" href="$graphic_8c.html#aa6c1ff5024cd4d15e476bce487584daa" title=" " alt="" coords="216,1259,275,1285"/>
+<area shape="rect" id="node4" href="$graphic_8c.html#afa847549e9dc6e4f49f651623bc456dc" title=" " alt="" coords="411,43,499,69"/>
+<area shape="rect" id="node5" href="$group__sprite.html#ga3fc1965bb7f45fd72fff8a402c507186" title="Simply draw a sprite in the buffer." alt="" coords="589,31,671,57"/>
+<area shape="rect" id="node6" href="$graphic_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title=" " alt="" coords="725,31,804,57"/>
+<area shape="rect" id="node9" href="$graphic_8c.html#a996ad0d46e46edac713af64ea63be162" title=" " alt="" coords="415,397,496,424"/>
+<area shape="rect" id="node12" href="$keyboard_8c.html#ac5a55c875cfe613e7fc3dec67ab0dde8" title=" " alt="" coords="379,448,531,475"/>
+<area shape="rect" id="node13" href="$mouse_8c.html#a685ad2706aca36d9869a30a19b9f446a" title=" " alt="" coords="376,499,535,525"/>
+<area shape="rect" id="node14" href="$group__timer.html#gafabd21de449be154dd65d5fdb2d8045d" title="Unsubscribes Timer 0 interrupts." alt="" coords="381,549,530,576"/>
+<area shape="rect" id="node11" href="$mouse_8c.html#a0e90f24ad514e9fcbd487a0b10e03c2c" title=" " alt="" coords="591,347,669,373"/>
+<area shape="rect" id="node16" href="$game_8c.html#ac5aaa38ff3762d478e6d3c25460e2c1f" title="Checks the hp of each cannon. If a hp is zero, than the game is over." alt="" coords="390,245,521,272"/>
+<area shape="rect" id="node21" href="$graphic_8c.html#ac74881828da63534c7f92d67142a015e" title=" " alt="" coords="401,296,509,323"/>
+<area shape="rect" id="node22" href="$mouse_8c.html#a8e1233e64b066c14cad2f262541116a1" title=" " alt="" coords="407,195,504,221"/>
+<area shape="rect" id="node17" href="$graphic_8c.html#a81bcdf0f86469cb3e7f35e67f3cccc5c" title=" " alt="" coords="591,296,669,323"/>
+<area shape="rect" id="node18" href="$graphic_8c.html#a8becb86f48f701c43e1c411f57f60c4d" title=" " alt="" coords="594,195,666,221"/>
+<area shape="rect" id="node19" href="$graphic_8c.html#ad5999dee7ae30ea14b13e2e2e5a92c88" title=" " alt="" coords="595,245,665,272"/>
+<area shape="rect" id="node20" href="$game_8c.html#a8320259bc6810b9d6d2c656d79c273ba" title="Restart game states for new match." alt="" coords="583,119,677,145"/>
+<area shape="rect" id="node30" href="$keyboard_8c.html#ab1fc9116ef6d91a72877aa0dfc3019e1" title=" " alt="" coords="402,752,509,779"/>
+<area shape="rect" id="node31" href="$keyboard_8c.html#acce7b36043562cfa187793cddb26537e" title=" " alt="" coords="584,752,676,779"/>
+<area shape="rect" id="node35" href="$group__sprite.html#gaa2220099d8a395b43f4b5190ee4e5a66" title="Draw the initial menu." alt="" coords="415,144,496,171"/>
+<area shape="rect" id="node37" href="$mouse_8c.html#aea313d30c395a14e45265305b2a951e8" title=" " alt="" coords="409,904,502,931"/>
+<area shape="rect" id="node41" href="$rtc_8c.html#ada6a89e4415129b99bd23ae3b434b12d" title="This function checks if the RTC is in the BCD format." alt="" coords="413,1005,498,1032"/>
+<area shape="rect" id="node42" href="$rtc_8c.html#a2cf5113f883fe60d8772728f42e2d1c2" title="Case the RTC is in the BCD format, we convert it to binary." alt="" coords="403,1056,508,1083"/>
+<area shape="rect" id="node45" href="$group__timer.html#ga703c60b40c8c49607d6ecb6fef82d27a" title="Reads the input timer configuration (status) via read&#45;back command." alt="" coords="402,1107,509,1133"/>
+<area shape="rect" id="node46" href="$utils_8c.html#a81621440b3d65680979425e39aa8c789" title="Self&#45;explanatory: gets 8 least significant bits from initial counting value." alt="" coords="407,1157,503,1184"/>
+<area shape="rect" id="node47" href="$utils_8c.html#a6a880076cd2ec468834438b6e0c58836" title="Self&#45;explanatory: gets 8 most significant bits from initial counting value." alt="" coords="405,1208,505,1235"/>
+</map>

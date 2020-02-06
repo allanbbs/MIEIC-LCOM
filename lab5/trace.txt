@@ -1,0 +1,53 @@
+@lcflib.a:2019, lcf_start
+  video_test_move(xpm, xi, yi, xf, yf, speed, fps)
+> video_test_move(0x81b05bc, 300, 300, 300, 500, 5, 30)
+  @lab5.c:187, video_test_move
+    vg_init(INDEX_MODE)
+  > vg_init(0x105)
+    @graphic.c:32, getPermission
+      sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)
+    > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff2b0 [0x00000000 - 0x000fffff <1024 KiB>])
+    < sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) -> (ret: 0)
+    @graphic.c:96, vbeModeInfo
+      lm_alloc(sizeof(vbe_mode_info_t), &info_map)
+    < lm_alloc(256, addr: 0xeffff218 [phys: 0x0008f000, virt: 0xefb8c000, size: 256 bytes]) -> (ret: 0xefb8c000)
+    @graphic.c:109, vbeModeInfo
+      sys_int86(&reg)
+    > sys_int86(addr: 0xeffff228 [AX: 4f01, BX: 0000, CX: 0105, DX: 0000, ES: 8000, DI: f000])
+    < sys_int86(addr: 0xeffff228 [AX: 004f, BX: 0000, CX: 0105, DX: 0000, ES: 8000, DI: f000]) -> (ret: 0)
+    @graphic.c:113, vbeModeInfo
+      lm_free(&info_map)
+    < lm_free(addr: 0xeffff218 [phys: 0x0008f000, virt: 0xefb8c000, size: 256 bytes]) -> (ret: 1)
+    @graphic.c:75, vg_init
+      sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)
+    > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff2a8 [0xe0000000 - 0xe00c0000 <768 KiB>])
+    < sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) -> (ret: 0)
+    @graphic.c:78, vg_init
+      vm_map_phys(SELF, (void *) mr.mr_base, vram_size)
+    < vm_map_phys(SELF, addr: 0xe0000000, 768 KiB) -> (ret: 0xef93b000)
+    @graphic.c:48, init_mode
+      sys_int86(&reg)
+    > sys_int86(addr: 0xeffff3b0 [AX: 4f02, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
+    < sys_int86(addr: 0xeffff3b0 [AX: 004f, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
+  < vg_init(0x105) -> (ret: 0xef93b000)
+  @graphic.c:96, vbeModeInfo
+    lm_alloc(sizeof(vbe_mode_info_t), &info_map)
+  < lm_alloc(256, addr: 0xeffff448 [phys: 0x0008f000, virt: 0xefb8c000, size: 256 bytes]) -> (ret: 0xefb8c000)
+  @graphic.c:109, vbeModeInfo
+    sys_int86(&reg)
+  > sys_int86(addr: 0xeffff458 [AX: 4f01, BX: 0000, CX: 0105, DX: 0000, ES: 8000, DI: f000])
+  < sys_int86(addr: 0xeffff458 [AX: 004f, BX: 0000, CX: 0105, DX: 0000, ES: 8000, DI: f000]) -> (ret: 0)
+  @graphic.c:113, vbeModeInfo
+    lm_free(&info_map)
+  < lm_free(addr: 0xeffff448 [phys: 0x0008f000, virt: 0xefb8c000, size: 256 bytes]) -> (ret: 1)
+  @lab5.c:193, video_test_move
+    printf("%d\n",XBOUND)
+    "1024"
+  @lab5.c:194, video_test_move
+    printf("%d\n",YBOUND)
+    "768"
+  @sprite.c:23, create_sprite
+    xom_load(xpm, XPM_INDEXED, &img)
+  > xom_load(addr: 0x81fb5a4, XPM_INDEXED, addr: 0xeffff470)
+  < xom_load(addr: 0x81fb5a4, XPM_INDEXED, addr: 0xeffff470 [64x64 : 136383040bytes]) -> (ret: 0x0)
+< video_test_move(0x81b05bc, 300, 300, 300, 500, 5, 30) -> (ret: 1)
